@@ -10,7 +10,7 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args){
-        File file = new File("C:\\Users\\maybe\\kenzie\\customProjects\\filereadwrite\\src\\main\\resources\\input.txt");
+        File file = new File("..\\filereadwrite\\src\\main\\resources\\input.txt");
 
         Set<String> uniqueWords = new HashSet<>();
 
@@ -32,7 +32,12 @@ public class Main {
         }
 
 
-
+        try {
+            //Writes the count of unique words to the end of the file instead of creating a new one
+            FileUtils.writeStringToFile(file, "Unique count = " + uniqueWords.size(), StandardCharsets.UTF_8, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
